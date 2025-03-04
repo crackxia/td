@@ -8293,7 +8293,8 @@ void MessagesManager::delete_dialog_messages_by_date(DialogId dialog_id, int32 m
 }
 
 int32 MessagesManager::get_unload_dialog_delay() const {
-  constexpr int32 DIALOG_UNLOAD_DELAY = 60;        // seconds
+  //修改卸载时间为10秒
+  constexpr int32 DIALOG_UNLOAD_DELAY = 10;        // seconds
   constexpr int32 DIALOG_UNLOAD_BOT_DELAY = 1800;  // seconds
 
   CHECK(is_message_unload_enabled());
@@ -12375,7 +12376,9 @@ void MessagesManager::on_get_dialogs(FolderId folder_id, vector<tl_object_ptr<te
 }
 
 bool MessagesManager::is_message_unload_enabled() const {
-  return G()->use_message_database() || td_->auth_manager_->is_bot();
+  // 修改为始终启用消息卸载
+  return true;
+ // return G()->use_message_database() || td_->auth_manager_->is_bot();
 }
 
 bool MessagesManager::can_unload_message(const Dialog *d, const Message *m) const {
