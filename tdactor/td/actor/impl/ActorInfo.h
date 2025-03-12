@@ -65,7 +65,7 @@ inline void ActorInfo::on_actor_moved(Actor *actor_new_ptr) {
 }
 
 inline void ActorInfo::clear() {
-  CHECK(mailbox_.empty());
+  mailbox_.clear();
   CHECK(!actor_);
   CHECK(!is_running());
   CHECK(!is_migrating());
